@@ -1,0 +1,12 @@
+server:
+  port: 8002
+spring:
+  application:
+    name: proveedor-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/proveedores
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
