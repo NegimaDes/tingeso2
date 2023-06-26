@@ -3,13 +3,13 @@ spring:
     restart:
       aditional-paths: src/main/java
   application:
-    name: provserv
+    name: acoserv
   cloud:
     config:
       enabled: true
       uri: http://localhost:8081
   datasource:
-    url: jdbc:postgresql://localhost:5432/proveedores
+    url: jdbc:postgresql://localhost:5432/acopios
     username: postgres
     password: postgres
   jpa:

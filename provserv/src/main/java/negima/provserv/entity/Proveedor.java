@@ -1,4 +1,4 @@
-package negima.provserv;
+package negima.provserv.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,7 +24,4 @@ public class Proveedor {
 
     private boolean retencion;
 
-    public boolean getRetencion(){
-        return this.retencion;
-    }
 }

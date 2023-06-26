@@ -1,10 +1,10 @@
-package negima.provserv;
+package negima.provserv.service;
 
-import lombok.Generated;
+import negima.provserv.entity.Proveedor;
+import negima.provserv.repository.ProveedorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.LinkedList;
 import java.util.List;
 
 import static java.lang.Math.max;

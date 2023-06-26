@@ -1,14 +1,12 @@
-package negima.provserv;
+package negima.provserv.controller;
 
-import org.apache.coyote.Response;
+import negima.provserv.service.ProveedorService;
+import negima.provserv.entity.Proveedor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
-import java.util.Objects;
 
 @RestController
 @RequestMapping("/proveedor")
