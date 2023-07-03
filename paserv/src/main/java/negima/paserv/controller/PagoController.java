@@ -23,9 +23,8 @@ public class PagoController {
         return ResponseEntity.ok(data);
     }
 
-    @PostMapping("/calcular/{anno}/{mes}/{quincena}")
-    public ResponseEntity<String> calcularPagos(@PathVariable("anno") int anno, @PathVariable("mes") int mes, @PathVariable("quincena") int quincena){
-        Integer[] fecha = new Integer[]{anno, mes, quincena};
+    @PostMapping("/calcular/")
+    public ResponseEntity<String> calcularPagos(@RequestParam("fecha") Integer[] fecha){
         serv.calcularPagos(fecha);
         return ResponseEntity.ok("Datos calculados correctamente");
     }

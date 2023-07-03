@@ -24,4 +24,8 @@ public class Proveedor {
 
     private boolean retencion;
 
+    public boolean getRetencion(){
+        return this.retencion;
+    }
+
 }

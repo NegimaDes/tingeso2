@@ -39,7 +39,7 @@ public class CalidadService {
                 readLine(line, fecha);
             }
             is.close();
-            restTemplate.postForEntity("http://paserv/calcular/"+fecha[0]+"/"+fecha[1]+"/"+fecha[2], null, null);
+            restTemplate.postForEntity("http://paserv/calcular/", fecha, Integer[].class);
         } catch(IOException e){
             System.err.println(e.getMessage());
         }
