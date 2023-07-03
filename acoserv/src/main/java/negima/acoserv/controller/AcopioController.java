@@ -32,7 +32,7 @@ public class AcopioController {
         return ResponseEntity.ok(acopio);
     }
 
-    @PostMapping()
+    @PostMapping
     public ResponseEntity<Acopio> save(@RequestBody Acopio newacopio){
         Acopio nuevo = serv.save(newacopio);
         return ResponseEntity.ok(nuevo);

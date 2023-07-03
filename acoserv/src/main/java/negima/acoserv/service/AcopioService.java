@@ -88,10 +88,10 @@ public class AcopioService {
                 fecha = readLine(line);
             }
             is.close();
+            restTemplate.postForEntity("http://calserv/doc/"+fecha[0]+"/"+fecha[1]+"/"+fecha[2],doc1, MultipartFile.class);
         } catch(IOException e){
             System.err.println(e.getMessage());
         }
-        restTemplate.postForEntity("http://calserv/doc/"+fecha[0]+"/"+fecha[1]+"/"+fecha[2],doc1, MultipartFile.class);
     }
 
     public Integer[] readLine(String line){

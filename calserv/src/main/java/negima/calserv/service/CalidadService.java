@@ -4,6 +4,7 @@ import negima.calserv.entity.Calidad;
 import negima.calserv.repository.CalidadRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.BufferedReader;
@@ -17,6 +18,9 @@ public class CalidadService {
 
     @Autowired
     CalidadRepository repo;
+
+    @Autowired
+    RestTemplate restTemplate;
 
     public Calidad save(Calidad nuevo){return repo.save(nuevo);}
 
@@ -35,6 +39,7 @@ public class CalidadService {
                 readLine(line, fecha);
             }
             is.close();
+            restTemplate.postForEntity("http://paserv/calcular/"+fecha[0]+"/"+fecha[1]+"/"+fecha[2], null, null);
         } catch(IOException e){
             System.err.println(e.getMessage());
         }
