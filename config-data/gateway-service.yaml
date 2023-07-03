@@ -25,18 +25,18 @@ spring:
             allow-credentials: true
       routes:
         - id: provserv
-          uri: lb://provserv
+          uri: lb://localhost:8082
           predicates:
             - Path=/proveedor/**
         - id: acoserv
-          uri: lb://acoserv
+          uri: lb://localhost:8083
           predicates:
             - Path=/acopio/**
         - id: calserv
-          uri: lb://calserv
+          uri: lb://localhost:8084
           predicates:
             - Path=/calidad/**
         - id: pagoserv
-          uri: lb://pagoserv
+          uri: lb://localhost:8085
           predicates:
             - Path=/pago/**
