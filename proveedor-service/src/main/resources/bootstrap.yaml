@@ -1,0 +1,22 @@
+spring:
+  devtools:
+    restart:
+      aditional-paths: src/main/java
+  application:
+    name: proveedor-service
+  cloud:
+    config:
+      enabled: true
+      uri: http://localhost:8081
+  datasource:
+    url: jdbc:postgresql://localhost:5432/proveedores
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
