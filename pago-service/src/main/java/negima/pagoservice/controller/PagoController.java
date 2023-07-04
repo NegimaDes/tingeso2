@@ -1,7 +1,7 @@
-package negima.paserv.controller;
+package negima.pagoservice.controller;
 
-import negima.paserv.entity.Pago;
-import negima.paserv.service.PagoService;
+import negima.pagoservice.entity.Pago;
+import negima.pagoservice.service.PagoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

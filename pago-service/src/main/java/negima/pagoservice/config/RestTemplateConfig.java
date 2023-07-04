@@ -1,4 +1,4 @@
-package negima.paserv.config;
+package negima.pagoservice.config;
 
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;

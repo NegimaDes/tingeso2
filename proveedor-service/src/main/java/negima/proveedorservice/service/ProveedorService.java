@@ -1,7 +1,7 @@
-package negima.provserv.service;
+package negima.proveedorservice.service;
 
-import negima.provserv.entity.Proveedor;
-import negima.provserv.repository.ProveedorRepository;
+import negima.proveedorservice.entity.Proveedor;
+import negima.proveedorservice.repository.ProveedorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

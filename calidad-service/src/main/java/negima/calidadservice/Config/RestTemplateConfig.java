@@ -1,4 +1,4 @@
-package negima.calserv.Config;
+package negima.calidadservice.Config;
 
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;

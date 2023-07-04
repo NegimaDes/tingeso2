@@ -1,7 +1,7 @@
-package negima.calserv.controller;
+package negima.calidadservice.controller;
 
-import negima.calserv.entity.Calidad;
-import negima.calserv.service.CalidadService;
+import negima.calidadservice.entity.Calidad;
+import negima.calidadservice.service.CalidadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

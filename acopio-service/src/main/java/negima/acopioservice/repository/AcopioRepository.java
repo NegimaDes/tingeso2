@@ -1,6 +1,6 @@
-package negima.acoserv.repository;
+package negima.acopioservice.repository;
 
-import negima.acoserv.entity.Acopio;
+import negima.acopioservice.entity.Acopio;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

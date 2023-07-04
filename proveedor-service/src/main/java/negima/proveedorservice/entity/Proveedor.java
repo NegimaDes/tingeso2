@@ -1,4 +1,4 @@
-package negima.provserv.entity;
+package negima.proveedorservice.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

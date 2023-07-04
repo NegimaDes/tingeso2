@@ -1,6 +1,6 @@
-package negima.paserv.repository;
+package negima.pagoservice.repository;
 
-import negima.paserv.entity.Pago;
+import negima.pagoservice.entity.Pago;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

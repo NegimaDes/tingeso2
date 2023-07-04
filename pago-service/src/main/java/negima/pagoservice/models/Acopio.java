@@ -1,4 +1,4 @@
-package negima.paserv.models;
+package negima.pagoservice.models;
 
 import lombok.Data;
 

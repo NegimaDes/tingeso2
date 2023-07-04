@@ -1,7 +1,7 @@
-package negima.acoserv.service;
+package negima.acopioservice.service;
 
-import negima.acoserv.entity.Acopio;
-import negima.acoserv.repository.AcopioRepository;
+import negima.acopioservice.entity.Acopio;
+import negima.acopioservice.repository.AcopioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;

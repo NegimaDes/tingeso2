@@ -1,4 +1,4 @@
-package negima.calserv.entity;
+package negima.calidadservice.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

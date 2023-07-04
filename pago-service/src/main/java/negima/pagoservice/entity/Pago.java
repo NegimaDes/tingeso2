@@ -1,4 +1,4 @@
-package negima.paserv.entity;
+package negima.pagoservice.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

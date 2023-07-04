@@ -1,7 +1,7 @@
-package negima.acoserv.controller;
+package negima.acopioservice.controller;
 
-import negima.acoserv.entity.Acopio;
-import negima.acoserv.service.AcopioService;
+import negima.acopioservice.entity.Acopio;
+import negima.acopioservice.service.AcopioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

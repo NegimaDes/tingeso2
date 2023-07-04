@@ -1,4 +1,4 @@
-package negima.acoserv.config;
+package negima.acopioservice.config;
 
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;

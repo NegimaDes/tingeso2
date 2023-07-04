@@ -1,4 +1,4 @@
-package negima.acoserv.entity;
+package negima.acopioservice.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

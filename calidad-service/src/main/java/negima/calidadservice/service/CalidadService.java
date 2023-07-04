@@ -1,7 +1,7 @@
-package negima.calserv.service;
+package negima.calidadservice.service;
 
-import negima.calserv.entity.Calidad;
-import negima.calserv.repository.CalidadRepository;
+import negima.calidadservice.entity.Calidad;
+import negima.calidadservice.repository.CalidadRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;

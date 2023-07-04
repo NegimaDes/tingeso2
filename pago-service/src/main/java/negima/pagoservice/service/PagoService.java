@@ -1,14 +1,14 @@
-package negima.paserv.service;
+package negima.pagoservice.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.SneakyThrows;
-import negima.paserv.entity.Pago;
-import negima.paserv.models.Acopio;
-import negima.paserv.models.Calidad;
-import negima.paserv.models.Proveedor;
-import negima.paserv.repository.PagoRepository;
+import negima.pagoservice.entity.Pago;
+import negima.pagoservice.models.Acopio;
+import negima.pagoservice.models.Calidad;
+import negima.pagoservice.models.Proveedor;
+import negima.pagoservice.repository.PagoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

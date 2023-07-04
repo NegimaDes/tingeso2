@@ -1,7 +1,7 @@
-package negima.provserv.controller;
+package negima.proveedorservice.controller;
 
-import negima.provserv.service.ProveedorService;
-import negima.provserv.entity.Proveedor;
+import negima.proveedorservice.service.ProveedorService;
+import negima.proveedorservice.entity.Proveedor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

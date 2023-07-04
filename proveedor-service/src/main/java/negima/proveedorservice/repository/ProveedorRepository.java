@@ -1,6 +1,7 @@
-package negima.provserv.repository;
+package negima.proveedorservice.repository;
 
-import negima.provserv.entity.Proveedor;
+
+import negima.proveedorservice.entity.Proveedor;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
