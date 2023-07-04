@@ -10,9 +10,9 @@ function Navbar1() {
                 </div>
                 <div className={styles.navbarButtons}>
                     <a className={`${styles.navbarButton} ${styles.roundedButton}`} href="/">Volver al menú principal</a>
-                    <a className={`${styles.navbarButton} ${styles.roundedButton}`} href="/acopio">Subir archivos</a>
-                    <a className={`${styles.navbarButton} ${styles.roundedButton}`} href="/crear-prov">Ingresar nuevo Proveedor</a>
-                    <a className={`${styles.navbarButton} ${styles.roundedButton}`} href="/pago">Ver pagos</a>
+                    <a className={`${styles.navbarButton} ${styles.roundedButton}`} href="/subirDatos">Subir archivos</a>
+                    <a className={`${styles.navbarButton} ${styles.roundedButton}`} href="/proveedores/nuevo">Ingresar nuevo Proveedor</a>
+                    <a className={`${styles.navbarButton} ${styles.roundedButton}`} href="/pago/index">Ver pagos</a>
                 </div>
             </header>
         </div>

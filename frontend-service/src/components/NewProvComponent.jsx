@@ -1,5 +1,5 @@
 import { Component } from "react";
-import ProvService from "../services/ProvService";
+import ProvService from "../services/ProveedorService";
 import '../styles/NewProv.css'
 import swal from 'sweetalert';
 import Axios from "axios";
@@ -23,7 +23,7 @@ class NewProv extends Component {
     saveProv = (e) => {
         e.preventDefault();
         let proveedor = {
-            "id_proveedor": this.state.id_proveedor,
+            "codigo": this.state.id_proveedor,
             "nombre": this.state.nombre,
             "categoria": this.state.categoria,
             "retencion": this.state.retencion

@@ -7,13 +7,15 @@
   }
   
   .upload-data-card {
+    width: 1000px;
+    height: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     max-width: 30em;
     border-radius: 0.5em;
-    background-color: #fff;
+    background-color: #772157;
     padding: 2.75em 2.5em;
   }
   
@@ -22,7 +24,9 @@
     text-align: center;
     font-weight: bold;
     margin-bottom: 1em;
-    color: black;
+    color: white;
+    padding: 9px 40px;
+    background-color: #25091b;
   }
   
   .upload-file-upload-btn {
@@ -31,17 +35,13 @@
     font-weight: bold;
     padding: 9px 40px;
     background-color: transparent;
-    border: 2px solid #b66498;
+    border: 2px solid #772157;
     border-radius: 50px;
     cursor: pointer;
-    color: #b66498;
+    color: white;
+    background-color: #25091b;
   }
   
-  .upload-file-upload-btn:hover {
-    background-color: #b66498;
-    color: white;
-    transform: scale(0.95);
-  }
   
   .upload-file-upload-btn:disabled {
     opacity: 0.5;
@@ -53,7 +53,7 @@
     margin: 1em auto;
     font-weight: bold;
     padding: 9px 40px;
-    background-color: #b66498;
+    background-color: #25091b;
     border: none;
     border-radius: 50px;
     cursor: pointer;

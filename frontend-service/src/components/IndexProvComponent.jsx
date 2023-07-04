@@ -1,5 +1,5 @@
 import { Component } from "react";
-import ProvService from "../services/ProvService";
+import ProvService from "../services/ProveedorService";
 import '../styles/Index.css'
 import NavbarAll from './Navbar';
 
@@ -41,7 +41,7 @@ class IndexProv extends Component {
                                                 <td> {proveedor.id_proveedor} </td>
                                                 <td> {proveedor.nombre} </td>
                                                 <td> {proveedor.categoria} </td>
-                                                <td>" . ({proveedor.retencion}==true ? 'Si' : 'No') . "</td>
+                                                {proveedor.retencion ? (<td>Si</td>) : (<td>No</td>)}
                                             </tr>
                                     )
                                 }
