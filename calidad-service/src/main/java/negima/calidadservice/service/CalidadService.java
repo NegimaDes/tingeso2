@@ -3,6 +3,7 @@ package negima.calidadservice.service;
 import negima.calidadservice.entity.Calidad;
 import negima.calidadservice.repository.CalidadRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
@@ -39,7 +40,6 @@ public class CalidadService {
                 readLine(line, fecha);
             }
             is.close();
-            restTemplate.postForEntity("http://paserv/calcular/", fecha, Integer[].class);
         } catch(IOException e){
             System.err.println(e.getMessage());
         }
@@ -49,11 +49,12 @@ public class CalidadService {
         String[] arr = line.split(",");
         Calidad nuevo = new Calidad();
         nuevo.setCodigo(Integer.parseInt(arr[0]));
-        nuevo.setGrasa(Integer.parseInt(arr[1]));
-        nuevo.setSolido(Integer.parseInt(arr[2]));
+        nuevo.setGrasas(Integer.parseInt(arr[1]));
+        nuevo.setSolidos(Integer.parseInt(arr[2]));
         nuevo.setAnno(fecha[0]);
         nuevo.setMes(fecha[1]);
         nuevo.setQuincena(fecha[2]);
+        save(nuevo);
     }
 
     public Calidad getByInfo(int codigo, int anno, int mes, int quincena){
@@ -61,6 +62,15 @@ public class CalidadService {
         for(Calidad temp:all)
             if(temp.getCodigo() == codigo && temp.getAnno()==anno &&temp.getMes()==mes && temp.getQuincena()==quincena)
                 return temp;
+        return null;
+    }
+
+    public Integer[] getFecha(){
+        ResponseEntity<Integer[]> responseEntity = restTemplate.getForEntity(
+                "http://acopio-service/acopio/lastDate", Integer[].class);
+        if(responseEntity.getStatusCode() == HttpStatus.OK) {
+            return responseEntity.getBody();
+        }
         return null;
     }
 

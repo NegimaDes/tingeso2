@@ -38,13 +38,13 @@ public class CalidadController {
         return ResponseEntity.ok(nuevo);
     }
 
-    @PostMapping("/doc/{anno}/{mes}/{quin}")
-    public ResponseEntity<String> docRead(@RequestParam("doc") MultipartFile doc,
-                                          @PathVariable("anno") int anno,
-                                          @PathVariable("mes") int mes,
-                                          @PathVariable("quin") int quincena){
-        Integer[] fecha = new Integer[]{anno, mes, quincena};
-        serv.readDoc(doc,fecha);
+    @PostMapping("/doc")
+    public ResponseEntity<String> docRead(@RequestParam("file") MultipartFile file){
+        Integer[] fecha = serv.getFecha();
+        if(fecha == null)
+            return ResponseEntity.internalServerError().build();
+        System.out.println(fecha[0]);
+        serv.readDoc(file,fecha);
         return ResponseEntity.ok("Archivo correctamente guardado");
     }
 
@@ -56,6 +56,7 @@ public class CalidadController {
         Calidad calidad = serv.getByInfo(codigo, anno, mes, quincena);
         if(calidad == null)
             return ResponseEntity.notFound().build();
+        System.out.println(calidad.getGrasas());
         return ResponseEntity.ok(calidad);
     }
 }

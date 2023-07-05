@@ -6,42 +6,26 @@
     padding: 2em; /* Ajustar el espacio de padding según sea necesario */
   }
   
-  .upload-data-card {
-    width: 1000px;
-    height: 500px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    max-width: 30em;
-    border-radius: 0.5em;
-    background-color: #772157;
-    padding: 2.75em 2.5em;
-  }
-  
-  
   .upload-h1 {
     text-align: center;
     font-weight: bold;
-    margin-bottom: 1em;
-    color: white;
     padding: 9px 40px;
-    background-color: #25091b;
+    margin-bottom: 15px;
+    font-size: 40px;
   }
-  
+
   .upload-file-upload-btn {
+    align-items: center;
     display: block;
-    margin: 1em auto;
     font-weight: bold;
     padding: 9px 40px;
-    background-color: transparent;
     border: 2px solid #772157;
-    border-radius: 50px;
     cursor: pointer;
     color: white;
-    background-color: #25091b;
+    background-color: #5a2949;
+    padding: 9px 40px;
+    border-radius: 50px;
   }
-  
   
   .upload-file-upload-btn:disabled {
     opacity: 0.5;
@@ -61,6 +45,6 @@
   }
   
   .upload-submit-btn:hover {
-    background-color: #b66498;
+    background-color: #5a2949;
     transform: scale(0.95);
   }

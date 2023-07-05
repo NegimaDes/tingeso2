@@ -14,14 +14,13 @@ import javax.persistence.*;
 public class Calidad {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_calidad")
-    private Integer idcalidad;
+    private Integer id;
 
     private Integer codigo;
 
-    private Integer grasa;
+    private Integer grasas;
 
-    private Integer solido;
+    private Integer solidos;
 
     private Integer anno;
 

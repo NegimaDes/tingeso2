@@ -2,7 +2,7 @@ import  axios from 'axios';
 
 const PROV_API_URL = "http://localhost:8080/proveedor";
 
-class ProvService {
+class ProveedorService {
 
     getProveedores(){
         return axios.get(PROV_API_URL);
@@ -13,4 +13,4 @@ class ProvService {
     }
 }
 
-export default new ProvService();
+export default new ProveedorService();

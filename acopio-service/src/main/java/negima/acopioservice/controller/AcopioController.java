@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -39,16 +40,26 @@ public class AcopioController {
     }
 
     @PostMapping("/doc")
-    public ResponseEntity<String> docRead(@RequestParam("doc1")MultipartFile doc1, @RequestParam("doc2")MultipartFile doc2){
-        serv.readDoc(doc1, doc2);
+    public ResponseEntity<String> docRead(@RequestParam("file")MultipartFile file){
+        serv.readDoc(file);
         return ResponseEntity.ok("Archivos correctamente guardados");
     }
 
     @GetMapping("/{anno}/{mes}/{quin}")
     public ResponseEntity<List<Acopio>> findPorFecha(@PathVariable("anno") int anno, @PathVariable("mes") int mes, @PathVariable("quin")int quincena){
         List<Acopio> acopios = serv.getByDate(anno, mes, quincena);
-        if(acopios.isEmpty())
-            return ResponseEntity.notFound().build();
+        if(acopios.isEmpty()) {
+            System.out.println("Se devuelve sin nada");
+            List<Acopio> dummy = new ArrayList<>();
+            return ResponseEntity.ok(dummy);
+        }
+        System.out.println("Se devuelve con algo");
         return ResponseEntity.ok(acopios);
+    }
+
+    @GetMapping("/lastDate")
+    public ResponseEntity<Integer[]> findLastDate(){
+        Acopio ultimo = serv.getLast(serv.getAll());
+        return ResponseEntity.ok(new Integer[]{ultimo.getAnno(), ultimo.getMes(), ultimo.getQuincena()});
     }
 }

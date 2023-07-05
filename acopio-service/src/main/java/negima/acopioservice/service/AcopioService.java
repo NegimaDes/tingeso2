@@ -3,11 +3,9 @@ package negima.acopioservice.service;
 import negima.acopioservice.entity.Acopio;
 import negima.acopioservice.repository.AcopioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -67,43 +65,39 @@ public class AcopioService {
 
     public Acopio findAcopio(int codigo, Integer anno, Integer mes, Integer quincena){
         Acopio ultimo = getAcopioByCodigo(codigo);
-    if(ultimo.getAnno() == anno && ultimo.getMes() == mes && ultimo.getQuincena() == quincena)
-        return ultimo;
-    return null;
+        if(Objects.equals(ultimo.getAnno(), anno) && Objects.equals(ultimo.getMes(), mes) && Objects.equals(ultimo.getQuincena(), quincena))
+            return ultimo;
+        return null;
     }
 
     public boolean confirmar(Acopio acopio, Integer anno, Integer mes, Integer quincena){
         return Objects.equals(acopio.getAnno(), anno) && Objects.equals(acopio.getMes(), mes) && Objects.equals(acopio.getQuincena(), quincena);
     }
 
-    public void readDoc(MultipartFile doc1, MultipartFile doc2){
+    public void readDoc(MultipartFile doc1){
         String line;
         BufferedReader br;
-        Integer[] fecha = null;
         try{
             InputStream is = doc1.getInputStream();
             br = new BufferedReader(new InputStreamReader(is));
             line = br.readLine();
             while ((line = br.readLine()) != null){
-                fecha = readLine(line);
+                readLine(line);
             }
             is.close();
-            restTemplate.postForEntity("http://calserv/doc/"+fecha[0]+"/"+fecha[1]+"/"+fecha[2],doc1, MultipartFile.class);
         } catch(IOException e){
             System.err.println(e.getMessage());
         }
     }
 
-    public Integer[] readLine(String line){
+    public void readLine(String line){
         String[] arr = line.split(",");
         Integer[] fecha = getListDate(arr[0]);
         int quincena = 1;
         if(fecha[1] > 15)
             quincena = 2;
-        Integer[] fecharespuesta = new Integer[]{fecha[2], fecha[0], quincena};
         Acopio acopio = findAcopio(Integer.parseInt(arr[2]), fecha[2], fecha[0], quincena);
         saveHandler(acopio, fecha[2], fecha[0], quincena, arr[1], arr[3], arr[2]);
-        return fecharespuesta;
     }
 
     public Integer[] getListDate(String fecha){

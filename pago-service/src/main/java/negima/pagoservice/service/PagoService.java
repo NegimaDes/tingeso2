@@ -62,10 +62,11 @@ public class PagoService {
         map.put("anno", anno);
         map.put("mes", mes);
         map.put("quin", quincena);
+        System.out.println(mes);
         ResponseEntity<String> responseEntity = restTemplate.getForEntity(
-                "http://acoserv/acopio/{anno}/{mes}/{quin}",
+                "http://acopio-service/acopio/{anno}/{mes}/{quin}",
                 String.class, map);
-        if(responseEntity.getStatusCode() == HttpStatus.OK) {
+        if(!Objects.equals(responseEntity.getBody(), "[]")) {
             String json = responseEntity.getBody();
             ObjectMapper mapper = new ObjectMapper();
             List<Acopio> datos = null;
@@ -86,9 +87,10 @@ public class PagoService {
         map.put("mes", mes);
         map.put("quin", quincena);
         ResponseEntity<Calidad> responseEntity = restTemplate.getForEntity(
-                "http://calserv/calidad/{code}/{anno}/{mes}/{quin}",
+                "http://calidad-service/calidad/{code}/{anno}/{mes}/{quin}",
                 Calidad.class, map);
         if(responseEntity.getStatusCode() == HttpStatus.OK) {
+            System.out.println(responseEntity.getBody().getGrasas());
             return responseEntity.getBody();
         }
         return null;
@@ -96,7 +98,7 @@ public class PagoService {
 
     public Proveedor getProveedor(int codigo){
         ResponseEntity<Proveedor> responseEntity = restTemplate.getForEntity(
-                "http://provserv/proveedor/{code}",
+                "http://proveedor-service/proveedor/{code}",
                 Proveedor.class, codigo);
         if(responseEntity.getStatusCode() == HttpStatus.OK) {
             return responseEntity.getBody();
@@ -138,9 +140,9 @@ public class PagoService {
         pago.setNombre(provcal.getNombre());
         pago.setKls(calculando.getTotalkls());
         pago.setDiasenvio(calculando.getEntregas());
-        pago.setPromDiario((float) pago.getKls()/pago.getDiasenvio());
-        pago.setGrasa(calcal.getGrasa());
-        pago.setSolidos(calcal.getSolido());
+        pago.setPromdiario((float) pago.getKls()/pago.getDiasenvio());
+        pago.setGrasa(calcal.getGrasas());
+        pago.setSolidos(calcal.getSolidos());
         return pago;
     }
 
@@ -197,12 +199,12 @@ public class PagoService {
             pago.setVfinal((int) (pago.getTotal() *(1-RETENCION)));
             pago.setRetencion((int) (pago.getTotal() * RETENCION));
             if(!proveedor.getRetencion())
-                restTemplate.postForEntity("http://provserv/proveedor/swap/"+proveedor.getCodigo(),null,null);
+                restTemplate.postForEntity("http://proveedor-service/proveedor/swap/"+proveedor.getCodigo(),null,null);
         }else{
             pago.setVfinal(pago.getTotal());
             pago.setRetencion(0);
             if(proveedor.getRetencion())
-                restTemplate.postForEntity("http://provserv/proveedor/swap/"+proveedor.getCodigo(),null,null);
+                restTemplate.postForEntity("http://proveedor-service/proveedor/swap/"+proveedor.getCodigo(),null,null);
         }
         return pago;
     }
@@ -221,9 +223,10 @@ public class PagoService {
     }
 
     public Integer getPagoGrasa(Calidad calidad){
-        if(calidad.getGrasa() <= 20){
+        System.out.println(calidad == null);
+        if(calidad.getGrasas() <= 20){
             return GRASA_BAJA;
-        }else if(calidad.getGrasa() <= 45){
+        }else if(calidad.getGrasas() <= 45){
             return GRASA_MEDIA;
         }else{
             return GRASA_ALTA;
@@ -231,11 +234,11 @@ public class PagoService {
     }
 
     public Integer getPagoSolidos(Calidad calidad){
-        if(calidad.getSolido() <= 7){
+        if(calidad.getSolidos() <= 7){
             return SOL_BAJO;
-        }else if(calidad.getSolido() <= 18){
+        }else if(calidad.getSolidos() <= 18){
             return SOL_MEDIO_BAJO;
-        }else if(calidad.getSolido() <= 35){
+        }else if(calidad.getSolidos() <= 35){
             return SOL_MEDIO_ALTO;
         }else{
             return SOL_ALTO;
@@ -273,7 +276,7 @@ public class PagoService {
         if(calprevia == null){
             return 0;
         }
-        float relacion = ((float) (calactual.getGrasa())/(float) (calprevia.getGrasa()))*100;
+        float relacion = ((float) (calactual.getGrasas())/(float) (calprevia.getGrasas()))*100;
         return (int) (100 - relacion);
     }
 
@@ -281,7 +284,7 @@ public class PagoService {
         if(calprevia == null){
             return 0;
         }
-        float relacion = ((float) (calactual.getSolido())/(float) (calprevia.getSolido()))*100;
+        float relacion = ((float) (calactual.getSolidos())/(float) (calprevia.getSolidos()))*100;
         return (int) (100 - relacion);
     }
 

@@ -1,5 +1,4 @@
 import { Component } from "react";
-import ProvService from "../services/ProveedorService";
 import '../styles/NewProv.css'
 import swal from 'sweetalert';
 import Axios from "axios";
@@ -20,6 +19,23 @@ class NewProv extends Component {
         this.changeRetencionHandler = this.changeRetencionHandler.bind(this);
         this.saveProv = this.saveProv.bind(this);
     }
+
+    changeIdProveedorHandler = (event) => {
+        this.setState({ id_proveedor: event.target.value });
+    }
+
+    changeNombreHandler = (event) => {
+        this.setState({ nombre: event.target.value });
+    }
+
+    changeCategoriaHandler = (event) => {
+        this.setState({ categoria: event.target.value });
+    }
+    
+    changeRetencionHandler = (event) => {
+        this.setState({ retencion: event.target.value });
+    }
+
     saveProv = (e) => {
         e.preventDefault();
         let proveedor = {
@@ -38,22 +54,12 @@ class NewProv extends Component {
 
         Axios.post("http://localhost:8080/proveedor", proveedor, axiosc).then(res => {
             swal("Proveedor registrado", "El proveedor se ha registrado exitosamente.", "success").then(() => {
-                window.location.href = "/proveedores";
+                window.location.href = "/proveedores/index";
             });
         });
     }
-    changeIdProveedorHandler = (event) => {
-        this.setState({ id_proveedor: event.target.value });
-    }
-    changeNombreHandler = (event) => {
-        this.setState({ nombre: event.target.value });
-    }
-    changeCategoriaHandler = (event) => {
-        this.setState({ categoria: event.target.value });
-    }
-    changeRetencionHandler = (event) => {
-        this.setState({ retencion: event.target.value });
-    }
+
+    
 
     render() {
         return (
@@ -71,16 +77,10 @@ class NewProv extends Component {
                                     <label><strong>Nombre: </strong></label>
                                     <input type="text" placeholder="Nombre" name="nombre" value={this.state.nombre} onChange={this.changeNombreHandler} />
                                     <label><strong>Categoría del proveedor</strong></label>
-                                    <select className="select" name="categoria" value={this.state.categoria} onChange={this.changeCategoriaHandler}>
-                                        <option value="">Ingresa la categoría</option>
-                                        <option value="A">A</option>
-                                        <option value="B">B</option>
-                                        <option value="C">C</option>
-                                        <option value="D">D</option>
-                                    </select>
+                                    <input type="text" placeholder="A/B/C/D" name="categoria" value={this.state.categoria} onChange={this.changeCategoriaHandler} />
                                     <label><strong>¿El proveedor tiene retención?</strong></label>
                                     <select className="select" name="categoria" value={this.state.retencion} onChange={this.changeRetencionHandler}>
-                                        <option value="">Ingresa la categoría</option>
+                                        <option value="" disabled selected>Ingresa la categoría</option>
                                         <option value="true">Si</option>
                                         <option value="false">No</option>
                                     </select>

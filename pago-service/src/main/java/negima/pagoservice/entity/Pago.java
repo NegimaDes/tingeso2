@@ -14,8 +14,7 @@ import javax.persistence.*;
 public class Pago {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_pago")
-    private Integer idpago;
+    private Integer id;
 
     private Integer codigo;
 
@@ -27,7 +26,7 @@ public class Pago {
 
     private Integer diasenvio;
 
-    private float promDiario;
+    private float promdiario;
 
     private Integer grasa;
 

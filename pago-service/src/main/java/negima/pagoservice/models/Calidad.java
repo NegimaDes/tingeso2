@@ -1,16 +1,20 @@
 package negima.pagoservice.models;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Calidad {
-    private Integer idcalidad;
+    private Integer id;
 
     private Integer codigo;
 
-    private Integer grasa;
+    private Integer grasas;
 
-    private Integer solido;
+    private Integer solidos;
 
     private Integer anno;
 

@@ -16,7 +16,7 @@ class HomeComponent extends Component {
             <a class="card-link" href="/proveedores/index">Visualizar Listado de Proveedores</a>
           </div>
           <div class="card enter-collection-card">
-            <a class="card-link" href="/subirDatos">Ingresar Documentos de Acopios</a>
+            <a class="card-link" href="/subirAcopio">Ingresar Documentos de Acopios y Calidades</a>
           </div>
           <div class="card view-payments-card">
             <a class="card-link" href="/pagos/index">Visualizar Listado de Pagos</a>

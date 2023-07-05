@@ -1,5 +1,5 @@
 import { Component } from "react";
-import PaService from "../services/PaService";
+import PagoService from "../services/PagoService";
 import '../styles/Index.css'
 import NavbarAll from './Navbar';
 
@@ -12,7 +12,7 @@ class IndexPago extends Component {
     }
 
     componentDidMount() {
-        PaService.getPagos().then((res) => {
+        PagoService.getPagos().then((res) => {
             this.setState({ pagos: res.data });
         });
     }
@@ -51,9 +51,11 @@ class IndexPago extends Component {
                                 </tr>
                             </thead>
                             <tbody>
-                                {this.state.pagos.map(pago => (
-                                    <tr key={pago.id_pago}>
-                                        <td>{pago.quincena}</td>
+                                {
+                                this.state.pagos.map(
+                                    pago => 
+                                    <tr key={pago.id}>
+                                        <td>{pago.fecha}</td>
                                         <td>{pago.codigo}</td>
                                         <td>{pago.nombre}</td>
                                         <td>{pago.kls}</td>
@@ -64,10 +66,10 @@ class IndexPago extends Component {
                                         <td>{pago.varg}</td>
                                         <td>{pago.solidos}</td>
                                         <td>{pago.vars}</td>
-                                        <td>{pago.pagol}</td>
-                                        <td>{pago.pagog}</td>
-                                        <td>{pago.pagos}</td>
-                                        <td>{pago.bonif}</td>
+                                        <td>{pago.pleche}</td>
+                                        <td>{pago.pgrasa}</td>
+                                        <td>{pago.psolidos}</td>
+                                        <td>{pago.bonificacion}</td>
                                         <td>{pago.dvarl}</td>
                                         <td>{pago.dvarg}</td>
                                         <td>{pago.dvars}</td>
@@ -75,7 +77,7 @@ class IndexPago extends Component {
                                         <td>{pago.retencion}</td>
                                         <td>{pago.mfinal}</td>
                                     </tr>
-                                ))}
+                                )}
                             </tbody>
                         </table>
                     </div>

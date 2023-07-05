@@ -16,13 +16,13 @@ class IndexProv extends Component {
             this.setState({ proveedores: res.data });
         });
     }
+    
     render() {
         return (
             <div>
                 <NavbarAll />
                 <div>
                     <div style={{ textAlign: 'center' }} class="container my-2">
-
                         <h1 class="h1"><b> Listado de proveedores</b></h1>
                         <table style={{ border: '1px solid black' }} class="content-table">
                             <thead>
@@ -38,7 +38,7 @@ class IndexProv extends Component {
                                     this.state.proveedores.map(
                                         proveedor =>
                                             <tr key={proveedor.id}>
-                                                <td> {proveedor.id_proveedor} </td>
+                                                <td> {proveedor.codigo} </td>
                                                 <td> {proveedor.nombre} </td>
                                                 <td> {proveedor.categoria} </td>
                                                 {proveedor.retencion ? (<td>Si</td>) : (<td>No</td>)}
