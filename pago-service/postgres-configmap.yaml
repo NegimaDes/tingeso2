@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-db
+data:
+  host: postgres
+  name1: pagos
+  name2: calidades
+  name3: proveedores
+  name4: acopios

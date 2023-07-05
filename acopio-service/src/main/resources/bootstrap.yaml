@@ -9,9 +9,9 @@ spring:
       enabled: true
       uri: http://localhost:8081
   datasource:
-    url: jdbc:postgresql://localhost:5432/acopios
-    username: postgres
-    password: postgres
+    url: jdbc:postgresql://${DB_HOST:localhost}/${DB_NAME:acopios}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
   jpa:
     hibernate:
       ddl-auto: update

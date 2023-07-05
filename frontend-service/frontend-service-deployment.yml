@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-service-deployment
+  labels:
+    app: frontend-service-deployment
+spec:
+  selector:
+    matchLabels:
+      app: frontend-service-deployment
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: frontend-service-deployment
+    spec:
+      containers:
+        - name: frontend-service
+          image: negherch/kubernetes-frontend
+          ports:
+            - containerPort: 3000

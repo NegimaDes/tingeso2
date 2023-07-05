@@ -1,0 +1,75 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-acopios
+  labels:
+    app: postgres-acopios
+spec:
+  ports:
+    - port: 5432
+      targetPort: 5432
+  selector:
+    app: postgres-acopios
+  clusterIP: None
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres-acopios
+  labels:
+    app: postgres-acopios
+spec:
+  selector:
+    matchLabels:
+      app: postgres-acopios
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: postgres-acopios
+    spec:
+      containers:
+        - image: postgres:latest
+          name: postgres
+          env:
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-user-credentials
+                  key: username
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-user-credentials
+                  key: password
+            - name: POSTGRES_DB
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-db
+                  key: name4
+          ports:
+            - containerPort: 5432
+              name: postgres
+          volumeMounts:
+            - name: postgres-acopios-persistent-storage
+              mountPath: /var/lib/postgresql/data
+      volumes:
+        - name: postgres-acopios-persistent-storage
+          persistentVolumeClaim:
+            claimName: postgres-acopios-pv-claim
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: postgres-acopios-pv-claim
+  labels:
+    app: postgres
+    tier: database
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Mi

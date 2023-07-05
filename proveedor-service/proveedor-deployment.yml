@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: proveedor-deployment
+  labels:
+    app: proveedor-deployment
+spec:
+  selector:
+    matchLabels:
+      app: proveedor-deployment
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: proveedor-deployment
+    spec:
+      containers:
+        - name: proveedor-service
+          image: negherch/kubernetes-proveedor
+          ports:
+            - containerPort: 8082
+          env:
+            - name: spring.cloud.config.uri
+              value: http://config-service:8081
+            - name: spring.config.import
+              value: optional:configserver:http://config-service:8081
+            - name: eureka.client.serviceUrl.defaultZone
+              value: http://eureka-service:8761
+            - name: EUREKA
+              value: eureka-service
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:postgresql://postgres-proveedores:5432/proveedores
+            - name: DB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-db
+                  key: host
+            - name: DB_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-db
+                  key: name4
+            - name: DB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-user-credentials
+                  key: username
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-user-credentials
+                  key: password
